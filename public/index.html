@@ -1,0 +1,2014 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- 微信分享优化 -->
+<meta name="format-detection" content="telephone=no">
+<meta name="x5-orientation" content="portrait">
+<meta name="x5-fullscreen" content="true">
+<meta name="x5-page-mode" content="app">
+<title>石墨烯产业动态 - 石墨烯联盟CGIA</title>
+<link rel="icon" href="/logo.png">
+<style>
+:root {
+  --wood-dark: #8B6914;
+  --wood-mid: #A07828;
+  --wood-light: #C49A33;
+  --wood-highlight: #D4B356;
+  --shelf-bg: #F5F0E1;
+  --card-bg: #ffffff;
+  --primary: #0078D4;
+  --primary-dark: #005A9E;
+  --text: #2c2c2c;
+  --text-light: #777;
+  --shadow: 0 2px 16px rgba(0,0,0,0.06);
+  --shadow-lg: 0 8px 40px rgba(0,0,0,0.10);
+  --radius: 12px;
+  --radius-lg: 16px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  background-color: var(--shelf-bg);
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(139, 105, 20, 0.03) 2px,
+      rgba(139, 105, 20, 0.03) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 8px,
+      rgba(139, 105, 20, 0.02) 8px,
+      rgba(139, 105, 20, 0.02) 10px
+    );
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ========== 顶部导航 - 木质风格 ========== */
+.header {
+  background: linear-gradient(to bottom,
+    #A07828 0%,
+    #8B6914 50%,
+    #6B4F10 100%);
+  border-bottom: 3px solid #5A420D;
+  padding: 0 32px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow:
+    0 4px 12px rgba(0,0,0,0.3),
+    inset 0 1px 0 rgba(255,255,255,0.2),
+    inset 0 -2px 0 rgba(0,0,0,0.2);
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 20px,
+      rgba(0,0,0,0.05) 20px,
+      rgba(0,0,0,0.05) 21px
+    ),
+    linear-gradient(to bottom,
+      #A07828 0%,
+      #8B6914 50%,
+      #6B4F10 100%);
+}
+
+.header-left { display: flex; align-items: center; gap: 12px; }
+
+.logo-icon {
+  width: 38px; height: 38px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  flex-shrink: 0;
+}
+.logo-icon img { width: 100%; height: 100%; object-fit: contain; }
+
+.logo-text {
+  font-size: 17px;
+  font-weight: 700;
+  color: #FFF8E7;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  white-space: nowrap;
+}
+
+.header-right { display: flex; align-items: center; gap: 16px; }
+
+.btn-upload {
+  display: flex; align-items: center; gap: 6px;
+  padding: 8px 20px;
+  background: linear-gradient(to bottom, var(--primary), var(--primary-dark));
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 8px;
+  font-size: 14px; font-weight: 600; cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.btn-upload:hover {
+  background: linear-gradient(to bottom, #1088E4, #006AB8);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,120,212,0.5);
+}
+
+.btn-upload svg { width: 16px; height: 16px; }
+
+/* ========== 主内容区 ========== */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 28px 32px;
+}
+
+/* ========== 书架 - 木质层板 ========== */
+.bookshelf-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.bookshelf-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #5A420D;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+}
+
+.book-count {
+  font-size: 14px;
+  color: var(--text-light);
+}
+
+/* 书架层板样式 */
+.bookshelf {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 24px;
+  background: linear-gradient(to bottom,
+    #D4B356 0%,
+    #C49A33 2%,
+    #A07828 100%);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow:
+    inset 0 2px 8px rgba(0,0,0,0.2),
+    0 8px 32px rgba(0,0,0,0.15);
+  border: 2px solid #8B6914;
+  position: relative;
+}
+
+.book-card {
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow:
+    0 4px 16px rgba(0,0,0,0.15),
+    0 1px 4px rgba(0,0,0,0.1);
+  position: relative;
+  animation: fadeIn 0.4s ease forwards;
+  transform-style: preserve-3d;
+  perspective: 500px;
+}
+
+.book-card:hover {
+  transform: translateY(-8px) rotateX(2deg);
+  box-shadow:
+    0 12px 40px rgba(0,0,0,0.25),
+    0 4px 12px rgba(0,0,0,0.15);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.book-cover {
+  width: 100%;
+  aspect-ratio: 3/4;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    inset -2px 0 8px rgba(0,0,0,0.1),
+    inset 2px 0 4px rgba(255,255,255,0.1);
+}
+
+.book-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.book-cover-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255,255,255,0.9);
+}
+
+.book-cover-placeholder svg { width: 40px; height: 40px; opacity: 0.8; }
+.book-cover-placeholder span { font-size: 12px; opacity: 0.7; }
+
+.book-spine {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  background: linear-gradient(to right,
+    rgba(0,0,0,0.2) 0%,
+    rgba(0,0,0,0.05) 50%,
+    rgba(0,0,0,0.1) 100%);
+  box-shadow: 2px 0 4px rgba(0,0,0,0.1);
+}
+
+.book-info {
+  padding: 14px 16px;
+  background: linear-gradient(to bottom, #fff, #f9f9f9);
+}
+
+.book-title {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.book-meta {
+  font-size: 12px;
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.book-pages { color: var(--primary); }
+
+.book-actions {
+  display: flex;
+  gap: 4px;
+  margin-top: 10px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.book-card:hover .book-actions { opacity: 1; }
+
+.btn-icon {
+  width: 28px;
+  height: 28px;
+  border: 1px solid #e5e7eb;
+  background: var(--card-bg);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: var(--text-light);
+  font-size: 12px;
+}
+
+.btn-icon:hover { background: #fef2f2; border-color: #fecaca; color: #ef4444; }
+.btn-icon.read:hover { background: #eff6ff; border-color: #bfdbfe; color: var(--primary); }
+
+/* ========== 空书架 ========== */
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+  grid-column: 1 / -1;
+}
+
+.empty-icon {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 24px;
+  background: var(--card-bg);
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow);
+}
+
+.empty-icon svg { width: 50px; height: 50px; color: #ccc; }
+.empty-title { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+.empty-desc { font-size: 14px; color: var(--text-light); margin-bottom: 24px; }
+
+.upload-area {
+  border: 2px dashed #d1d5db;
+  border-radius: var(--radius-lg);
+  padding: 48px;
+  text-align: center;
+  transition: all 0.3s;
+  background: var(--card-bg);
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.upload-area:hover { border-color: var(--primary); background: #f8faff; }
+.upload-area svg { width: 48px; height: 48px; color: #bbb; margin-bottom: 16px; }
+.upload-area-title { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+.upload-area-desc { font-size: 13px; color: var(--text-light); }
+.inline-upload { margin-top: 0; }
+
+/* ========== 访问链接提示 ========== */
+.access-links {
+  background: linear-gradient(135deg, #e8f4fd, #f0f9ff);
+  border: 1px solid #bae6fd;
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  font-size: 13px;
+}
+.access-links-title {
+  font-weight: 600;
+  color: var(--primary-dark);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.access-link-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 0;
+  color: #555;
+}
+.access-link-item a {
+  color: var(--primary);
+  text-decoration: none;
+  word-break: break-all;
+}
+.access-link-item a:hover { text-decoration: underline; }
+.access-link-tag {
+  background: var(--primary);
+  color: #fff;
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+/* ========== Toast ========== */
+.toast {
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  z-index: 400;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.toast.show { opacity: 1; }
+.toast.success { background: #10b981; }
+.toast.error { background: #ef4444; }
+
+/* ========== 阅读器 ========== */
+.reader-overlay {
+  position: fixed;
+  inset: 0;
+  background: #1a1a2e;
+  z-index: 300;
+  display: none;
+  flex-direction: column;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.reader-overlay.active { display: flex; }
+
+.reader-toolbar {
+  height: 56px;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  color: #fff;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  flex-shrink: 0;
+}
+
+.reader-toolbar-left { display: flex; align-items: center; gap: 16px; }
+
+.btn-back {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-back:hover { background: rgba(255,255,255,0.1); }
+
+.reader-title {
+  font-size: 14px;
+  font-weight: 600;
+  max-width: 400px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.reader-page-info {
+  font-size: 13px;
+  color: rgba(255,255,255,0.7);
+}
+
+.reader-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-control {
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: transparent;
+  border-radius: 8px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 14px;
+}
+
+.btn-control:hover { background: rgba(255,255,255,0.15); }
+
+/* ========== 阅读器主区域 ========== */
+.reader-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 40px 80px;
+}
+
+/* 翻页箭头 */
+.page-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 56px;
+  height: 100px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.4);
+  font-size: 28px;
+  cursor: pointer;
+  z-index: 20;
+  transition: all 0.2s;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+}
+
+.page-nav:hover { background: rgba(255,255,255,0.15); color: #fff; }
+.page-nav.prev { left: 20px; }
+.page-nav.next { right: 20px; }
+
+/* ========== 3D书籍容器 ========== */
+.book-viewport {
+  perspective: 2000px;
+  perspective-origin: center center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.book-stage {
+  position: relative;
+  transform-style: preserve-3d;
+  display: flex;
+  align-items: center;
+}
+
+/* ========== 书页 ========== */
+.page-sheet {
+  position: relative;
+  flex-shrink: 0;
+  background: #fdfdfd;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+
+.page-sheet.single {
+  border-radius: 6px;
+}
+
+.page-sheet.left {
+  border-radius: 6px 0 0 6px;
+  box-shadow: inset -2px 0 6px rgba(0,0,0,0.04);
+}
+
+.page-sheet.right {
+  border-radius: 0 6px 6px 0;
+  box-shadow: inset 2px 0 6px rgba(0,0,0,0.04);
+}
+
+.page-sheet canvas {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* 书脊 */
+.book-spine-divider {
+  position: absolute;
+  left: 50%;
+  top: 4%;
+  bottom: 4%;
+  width: 2px;
+  transform: translateX(-50%);
+  background: linear-gradient(to bottom,
+    transparent,
+    rgba(0,0,0,0.06) 10%,
+    rgba(0,0,0,0.12) 50%,
+    rgba(0,0,0,0.06) 90%,
+    transparent);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ========== 翻页动画层 ========== */
+.flip-container {
+  position: absolute;
+  top: 0;
+  transform-style: preserve-3d;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.flip-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.flip-face {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  overflow: hidden;
+}
+
+.flip-front {
+  background: #fdfdfd;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+
+.flip-back {
+  background: #f8f8f8;
+  transform: rotateY(180deg);
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+
+.flip-face canvas {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* 翻页阴影层 */
+.flip-shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s;
+  z-index: 1;
+}
+
+/* 页面下阴影 */
+.page-cast-shadow {
+  position: absolute;
+  top: 0;
+  width: 80px;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+/* ========== 翻页触发区域（角落折角视觉提示） ========== */
+.page-curl-hint {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 38px 38px;
+  border-color: transparent transparent rgba(0,0,0,0.06) transparent;
+  transition: border-color 0.2s;
+  pointer-events: none;
+  z-index: 6;
+}
+
+.page-curl-hint.left-side {
+  right: auto;
+  left: 0;
+  border-width: 0 38px 38px 0;
+  border-color: transparent rgba(0,0,0,0.06) transparent transparent;
+}
+
+.page-sheet:hover .page-curl-hint {
+  border-color: transparent transparent rgba(0,0,0,0.13) transparent;
+}
+
+.page-sheet:hover .page-curl-hint.left-side {
+  border-color: transparent rgba(0,0,0,0.13) transparent transparent;
+}
+
+/* ========== 缩放提示 ========== */
+.keyboard-hint {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255,255,255,0.2);
+  font-size: 12px;
+  z-index: 10;
+  pointer-events: none;
+  transition: opacity 1s;
+}
+
+/* ========== 页面缩略图导航 ========== */
+.page-thumbnails {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 0 20px;
+  overflow-x: auto;
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s;
+  transform: translateY(100%);
+  z-index: 30;
+}
+
+.page-thumbnails.visible { transform: translateY(0); }
+
+.page-thumbnails canvas {
+  height: 54px;
+  width: auto;
+  border: 2px solid transparent;
+  border-radius: 2px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: border-color 0.2s;
+}
+
+.page-thumbnails canvas:hover { border-color: rgba(255,255,255,0.5); }
+.page-thumbnails canvas.active { border-color: var(--primary); box-shadow: 0 0 8px rgba(0,120,212,0.4); }
+
+/* ========== 加载占位 ========== */
+.page-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  font-size: 13px;
+  background: #f5f5f5;
+}
+.page-loading::after {
+  content: '';
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ddd;
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-left: 8px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ========== 响应式设计 ========== */
+@media (max-width: 960px) {
+  .page-sheet { width: 240px; height: 340px; }
+  .page-nav { width: 40px; height: 64px; font-size: 20px; }
+  .reader-main { padding: 30px 50px; }
+  .header { padding: 0 16px; }
+  .container { padding: 20px 16px; }
+  .bookshelf {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 16px;
+    padding: 16px;
+  }
+  .access-links { padding: 12px 14px; font-size: 12px; }
+}
+
+@media (max-width: 600px) {
+  .header { height: 50px; padding: 0 12px; }
+  .logo-icon { width: 32px; height: 32px; }
+  .logo-text { font-size: 14px; }
+  .btn-upload { padding: 6px 12px; font-size: 13px; }
+  .btn-upload svg { width: 14px; height: 14px; }
+
+  .container { padding: 16px 12px; }
+  .bookshelf-header { margin-bottom: 16px; }
+  .bookshelf-title { font-size: 18px; }
+  .bookshelf {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 12px;
+  }
+  .book-info { padding: 10px 12px; }
+  .book-title { font-size: 13px; }
+  .book-meta { font-size: 11px; }
+
+  .reader-toolbar { padding: 0 12px; height: 48px; }
+  .reader-title { max-width: 120px; font-size: 12px; }
+  .btn-back { padding: 4px 10px; font-size: 12px; }
+  .btn-control { width: 32px; height: 32px; font-size: 12px; }
+
+  .reader-main { padding: 20px 40px; }
+  .page-nav { width: 32px; height: 56px; font-size: 18px; }
+  .page-nav.prev { left: 8px; }
+  .page-nav.next { right: 8px; }
+
+  .page-thumbnails { height: 60px; }
+  .page-thumbnails canvas { height: 42px; }
+
+  .access-links { font-size: 11px; }
+}
+
+@media (max-width: 400px) {
+  .bookshelf {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    padding: 8px;
+  }
+  .book-info { padding: 8px 10px; }
+  .book-title { font-size: 12px; -webkit-line-clamp: 1; }
+  .book-actions { opacity: 1; }
+  .btn-icon { width: 24px; height: 24px; font-size: 10px; }
+}
+
+/* ========== 横屏适配（手机横放） ========== */
+@media (orientation: landscape) and (max-height: 500px) {
+  .header { height: 44px; padding: 0 16px; }
+  .logo-text { font-size: 14px; }
+  .reader-toolbar { height: 40px; padding: 0 12px; }
+  .reader-main { padding: 8px 60px; }
+  .page-sheet { width: 280px !important; height: 200px !important; }
+  .page-nav { width: 36px; height: 48px; font-size: 16px; }
+  .page-nav.prev { left: 12px; }
+  .page-nav.next { right: 12px; }
+  .keyboard-hint { display: none; }
+  .page-thumbnails { height: 50px; }
+  .page-thumbnails canvas { height: 36px; }
+  .btn-back { padding: 4px 10px; font-size: 11px; }
+  .btn-control { width: 28px; height: 28px; font-size: 11px; }
+}
+
+/* 横屏双页模式增强 */
+@media (orientation: landscape) and (min-height: 400px) and (max-height: 700px) {
+  .page-sheet { width: 340px !important; height: 480px !important; }
+}
+
+#fileInput { display: none; }
+
+/* ========== 微信小程序区域 ========== */
+.wechat-section {
+  margin-top: 32px;
+  padding: 32px 24px;
+  background: linear-gradient(135deg, #f8fafc 0%, #e8f4e8 100%);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+.wechat-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.wechat-icon {
+  width: 36px;
+  height: 36px;
+  background: #07C160;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 20px;
+}
+.wechat-section-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #333;
+}
+.wechat-section-desc {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+.wechat-miniapp-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  background: #fff;
+  border-radius: 14px;
+  padding: 16px 28px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  cursor: pointer;
+  transition: all 0.25s;
+  border: 1px solid rgba(7,193,96,0.15);
+}
+.wechat-miniapp-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(7,193,96,0.15);
+}
+.wechat-miniapp-icon {
+  width: 48px; height: 48px;
+  background: linear-gradient(135deg, #07C160, #06AD56);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.wechat-miniapp-icon svg {
+  width: 24px; height: 24px;
+  color: #fff;
+}
+.wechat-miniapp-info {
+  text-align: left;
+}
+.wechat-miniapp-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+}
+.wechat-miniapp-tag {
+  display: inline-block;
+  font-size: 11px;
+  color: #07C160;
+  background: rgba(7,193,96,0.1);
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-top: 4px;
+}
+.wechat-qr-hint {
+  margin-top: 14px;
+  font-size: 12px;
+  color: #aaa;
+}
+.wechat-qr-hint a {
+  color: var(--primary);
+  text-decoration: none;
+}
+@media (max-width: 480px) {
+  .wechat-section { padding: 20px 14px; }
+  .wechat-miniapp-card { padding: 12px 18px; }
+  .wechat-miniapp-icon { width: 40px; height: 40px; }
+}
+@media (orientation: landscape) and (max-height: 500px) {
+  .wechat-section { margin-top: 16px; padding: 14px; }
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-left">
+    <div class="logo-icon">
+      <img src="/logo.png" alt="CGIA Logo">
+    </div>
+    <span class="logo-text">石墨烯产业动态（石墨烯联盟CGIA）</span>
+  </div>
+  <div class="header-right">
+    <button class="btn-upload" onclick="triggerUpload()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+      上传PDF
+    </button>
+  </div>
+</header>
+
+<main class="container" id="mainContent"></main>
+
+<!-- 微信小程序入口 -->
+<footer class="container">
+  <div class="wechat-section">
+    <div class="wechat-section-header">
+      <div class="wechat-icon">💬</div>
+      <span class="wechat-section-title">微信小程序</span>
+    </div>
+    <div class="wechat-section-desc">
+      扫码或在微信中搜索小程序，随时随地查看石墨烯产业动态报告
+    </div>
+    <div class="wechat-miniapp-card" onclick="openWechatMiniApp()" title="点击打开微信小程序">
+      <div class="wechat-miniapp-icon">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 01.213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 00.167-.054l1.903-1.114a.864.864 0 01.717-.098 10.16 10.16 0 002.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348z"/></svg>
+      </div>
+      <div class="wechat-miniapp-info">
+        <div class="wechat-miniapp-name">世说新材</div>
+        <div class="wechat-miniapp-tag">小程序</div>
+      </div>
+    </div>
+    <div class="wechat-qr-hint">
+      关注微信公众号 <strong>世说新材</strong> 或 <a href="javascript:openWechatMiniApp()">打开小程序</a>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+<input type="file" id="fileInput" accept=".pdf" onchange="handleFileSelect(event)">
+
+<!-- 阅读器 -->
+<div class="reader-overlay" id="readerOverlay">
+  <div class="reader-toolbar">
+    <div class="reader-toolbar-left">
+      <button class="btn-back" onclick="closeReader()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        返回书架
+      </button>
+      <span class="reader-title" id="readerTitle">-</span>
+    </div>
+    <div class="reader-controls">
+      <span class="reader-page-info" id="readerPageInfo"></span>
+      <button class="btn-control" onclick="toggleThumbnails()" title="页面缩略图">▦</button>
+      <button class="btn-control" onclick="toggleMode()" title="单/双页" id="btnMode">📖</button>
+      <button class="btn-control" onclick="zoomOut()" title="缩小">&#8722;</button>
+      <button class="btn-control" onclick="zoomIn()" title="放大">+</button>
+    </div>
+  </div>
+
+  <div class="reader-main" id="readerMain">
+    <button class="page-nav prev" id="btnPrev" onclick="prevPage()">&#9664;</button>
+    <div class="book-viewport" id="bookViewport"></div>
+    <button class="page-nav next" id="btnNext" onclick="nextPage()">&#9654;</button>
+    <div class="keyboard-hint" id="keyboardHint">&#8592; &#8594; 键翻页 &#183; 拖动书角翻页 &#183; 双指缩放</div>
+  </div>
+
+  <div class="page-thumbnails" id="pageThumbnails"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>
+pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+// ========== 全局状态 ==========
+const $ = id => document.getElementById(id);
+const state = {
+  books: [],
+  currentBook: null,
+  pdfDoc: null,       // PDF文档对象
+  totalPages: 0,
+  pages: [],          // 预渲染 canvas 数组（懒加载）
+  currentPage: 0,     // 当前页码
+  zoom: 1.0,
+  isDoublePage: true,  // true=双页模式, false=单页模式
+  isFlipping: false,
+  thumbnailsVisible: false,
+  pageScale: 1.5,      // PDF渲染缩放比例
+  loadQueue: [],       // 页面加载队列
+  isLoadingPages: false,
+};
+
+// ========== API ==========
+const api = {
+  async getBooks() { const r=await fetch('/api/books'); return r.json(); },
+  async uploadPDF(file) { const f=new FormData(); f.append('pdf',file); const r=await fetch('/api/upload',{method:'POST',body:f}); return r.json(); },
+  async deleteBook(id) { const r=await fetch(`/api/books/${id}`,{method:'DELETE'}); return r.json(); },
+  async updateBook(id,d) { const r=await fetch(`/api/books/${id}`,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)}); return r.json(); },
+  async uploadCover(id, blob) {
+    const f = new FormData(); f.append('cover', blob, 'cover.jpg');
+    const r = await fetch(`/api/books/${id}/cover`, { method: 'POST', body: f });
+    return r.json();
+  }
+};
+
+// ========== Toast ==========
+function showToast(msg,type='') {
+  const t=$('toast'); t.textContent=msg; t.className=`toast ${type} show`;
+  clearTimeout(t._t); t._t=setTimeout(()=>t.classList.remove('show'),2500);
+}
+
+// ========== 上传 ==========
+function triggerUpload(){ $('fileInput').click(); }
+
+async function handleFileSelect(e){
+  const file=e.target.files[0]; if(!file)return;
+  if(!file.name.toLowerCase().endsWith('.pdf')){showToast('请选择 PDF 文件','error');return;}
+  showToast('正在上传...','success');
+  e.target.value=''; // 先清空输入
+  try{
+    const r=await api.uploadPDF(file);
+    if(r.success){
+      showToast('上传成功！正在生成封面...','success');
+      // 服务器端也会异步提取封面，这里同时用前端提取（确保快速可用）
+      await extractCoverFromFile(file, r.data.id);
+      // 延迟刷新以等待服务器端封面生成
+      await loadBooks();
+      setTimeout(() => loadBooks(), 3000); // 3秒后再刷新一次获取服务器端封面
+    } else {
+      showToast(r.message||'上传失败','error');
+    }
+  } catch(err){
+    showToast('上传失败: '+err.message,'error');
+    // 即使封面提取失败，也刷新书架
+    await loadBooks();
+  }
+}
+
+// ========== 自动提取PDF封面 ==========
+async function extractCoverFromFile(file, bookId) {
+  try {
+    const arrayBuffer = await file.arrayBuffer();
+    const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+    if (pdf.numPages === 0) return;
+
+    const page = await pdf.getPage(1);
+    // 生成缩略图封面（较小尺寸）
+    const thumbScale = 300 / page.getViewport({ scale: 1 }).width;
+    const viewport = page.getViewport({ scale: Math.max(thumbScale, 0.5) });
+
+    const canvas = document.createElement('canvas');
+    canvas.width = viewport.width;
+    canvas.height = viewport.height;
+    const ctx = canvas.getContext('2d');
+    await page.render({ canvasContext: ctx, viewport }).promise;
+
+    // 转换为blob上传
+    const blob = await new Promise(r => canvas.toBlob(r, 'image/jpeg', 0.85));
+    if (blob) {
+      await api.uploadCover(bookId, blob);
+    }
+  } catch (err) {
+    console.log('封面提取失败:', err);
+  }
+}
+
+// ========== 书架 ==========
+async function loadBooks(){
+  try{
+    const r=await api.getBooks();
+    if(r.success){state.books=r.data;renderBookshelf();}
+  } catch(err){showToast('加载书架失败','error');}
+}
+
+function escapeHtml(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML;}
+
+function getLocalIPs() {
+  // 尝试从服务器日志获取，这里用简单提示
+  return [];
+}
+
+function renderBookshelf(){
+  const c=$('mainContent'), books=state.books;
+
+  // 访问链接区域
+  let linksHtml = '';
+  const hostname = window.location.hostname;
+  const isLocal = hostname === 'localhost' || hostname === '127.0.0.1';
+  if (isLocal) {
+    linksHtml = `<div class="access-links">
+      <div class="access-links-title">🔗 访问方式</div>
+      <div class="access-link-item"><span class="access-link-tag">本机</span><a href="http://localhost:3456" target="_blank">http://localhost:3456</a></div>
+      <div class="access-link-item"><span class="access-link-tag">公网</span><a href="https://291e810cb93670.lhr.life" target="_blank">https://291e810cb93670.lhr.life</a></div>
+      <div style="margin-top:6px;color:#888;font-size:12px;">💡 同一WiFi下手机可直接访问局域网地址；公网链接需保持电脑开机联网</div>
+    </div>`;
+  }
+
+  if(books.length===0){
+    c.innerHTML=linksHtml + `<div class="bookshelf-header"><h2 class="bookshelf-title">石墨烯产业动态</h2><span class="book-count">0 本书</span></div>
+    <div class="empty-state"><div class="empty-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+    <div class="empty-title">书架空空如也</div><div class="empty-desc">上传 PDF 文件，自动转换成翻页电子书</div>
+    <div class="upload-area inline-upload" onclick="triggerUpload()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg><div class="upload-area-title">点击上传 PDF</div><div class="upload-area-desc">支持最大 500MB 的 PDF 文件</div></div></div>`;
+    return;
+  }
+
+  let h=linksHtml + `<div class="bookshelf-header"><h2 class="bookshelf-title">石墨烯产业动态</h2><span class="book-count">${books.length} 本书</span></div><div class="bookshelf">`;
+  books.forEach((b,i)=>{
+    const d=new Date(b.uploadTime),ds=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+    const pg=b.totalPages?`${b.totalPages}页`:'';
+    const cover=b.coverPath?`<img src="/api/covers/${b.coverPath}" alt="${escapeHtml(b.title)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">`:'';
+    h+=`<div class="book-card" style="animation-delay:${i*0.05}s" onclick="openBook('${b.id}')">
+      <div class="book-cover"><div class="book-spine"></div>${cover}
+        <div class="book-cover-placeholder" style="${b.coverPath?'display:none':''}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg><span>PDF</span></div>
+      </div>
+      <div class="book-info">
+        <div class="book-title" title="${escapeHtml(b.title)}">${escapeHtml(b.title)}</div>
+        <div class="book-meta"><span>${ds}</span>${pg?`<span class="book-pages">&#183; ${pg}</span>`:''}</div>
+        <div class="book-actions">
+          <button class="btn-icon read" onclick="event.stopPropagation();openBook('${b.id}')" title="阅读">&#128214;</button>
+          <button class="btn-icon" onclick="event.stopPropagation();deleteBook('${b.id}')" title="删除">&#128465;</button>
+        </div>
+      </div></div>`;
+  });
+  h+='</div>'; c.innerHTML=h;
+}
+
+async function deleteBook(id){
+  if(!confirm('确定要删除这本书吗？此操作不可恢复。'))return;
+  try{await api.deleteBook(id);showToast('已删除','success');if(state.currentBook&&state.currentBook.id===id)closeReader();await loadBooks();}
+  catch(err){showToast('删除失败','error');}
+}
+
+// ========== 阅读器 — 打开书籍（优化加载） ==========
+async function openBook(id){
+  const book=state.books.find(b=>b.id===id); if(!book)return;
+  state.currentBook=book; state.currentPage=0; state.pages=[]; state.zoom=1.0; state.isFlipping=false;
+  state.pdfDoc = null;
+  state.isLoadingPages = false;
+  state.loadQueue = [];
+
+  $('readerOverlay').classList.add('active');
+  $('readerTitle').textContent=book.title;
+  $('readerPageInfo').textContent='加载中...';
+  $('bookViewport').innerHTML='<div style="color:rgba(255,255,255,0.5);text-align:center;padding:40px;font-size:16px;">&#128214; 正在加载 PDF...</div>';
+
+  try{
+    const loadingTask=pdfjsLib.getDocument(`/api/pdf/${id}`);
+    state.pdfDoc = await loadingTask.promise;
+    state.totalPages = state.pdfDoc.numPages;
+
+    // 更新总页数到服务器
+    if(book.totalPages !== state.totalPages){
+      await api.updateBook(id, { totalPages: state.totalPages });
+      book.totalPages = state.totalPages;
+    }
+
+    // 初始化pages数组（占位）
+    state.pages = new Array(state.totalPages).fill(null);
+
+    // 优先加载当前需要的页面
+    const initialPages = state.isDoublePage ? [0, 1] : [0];
+    await loadPageBatch(initialPages);
+
+    // 后台预加载其余页面
+    backgroundLoadPages();
+
+    renderSpread();
+  } catch(err){
+    showToast('加载失败: '+err.message,'error');
+    $('bookViewport').innerHTML=`<div style="color:#f66;text-align:center;padding:40px;">加载失败: ${err.message}</div>`;
+  }
+}
+
+// 加载指定页面（如果未加载，按需渲染）
+async function loadPage(pageIndex) {
+  if (pageIndex < 0 || pageIndex >= state.totalPages) return null;
+  if (state.pages[pageIndex]) return state.pages[pageIndex];
+
+  try {
+    const page = await state.pdfDoc.getPage(pageIndex + 1);
+    // 根据设备性能动态调整渲染分辨率
+    const isMobile = window.innerWidth < 600;
+    const scale = isMobile ? Math.min(state.pageScale, 1.2) : state.pageScale;
+    const viewport = page.getViewport({ scale });
+
+    const canvas = document.createElement('canvas');
+    canvas.width = viewport.width;
+    canvas.height = viewport.height;
+    const ctx = canvas.getContext('2d', { alpha: false }); // 关闭透明度加速
+    await page.render({ canvasContext: ctx, viewport }).promise;
+
+    state.pages[pageIndex] = canvas;
+    return canvas;
+  } catch (err) {
+    console.log(`加载第${pageIndex+1}页失败:`, err);
+    return null;
+  }
+}
+
+// 批量加载页面
+async function loadPageBatch(indices) {
+  const promises = indices.filter(i => i >= 0 && i < state.totalPages && !state.pages[i])
+    .map(i => loadPage(i));
+  await Promise.all(promises);
+}
+
+// 后台预加载页面（分批，不阻塞UI）
+function backgroundLoadPages() {
+  if (state.isLoadingPages) return;
+  state.isLoadingPages = true;
+
+  const BATCH_SIZE = 2; // 每次加载2页
+  const BATCH_DELAY = 80; // 每批间隔80ms
+
+  const loadBatch = () => {
+    const unloaded = [];
+    for (let i = 0; i < state.totalPages && unloaded.length < BATCH_SIZE; i++) {
+      if (state.pages[i] === null) unloaded.push(i);
+    }
+    if (unloaded.length === 0) {
+      state.isLoadingPages = false;
+      return;
+    }
+    Promise.all(unloaded.map(i => loadPage(i))).then(() => {
+      setTimeout(loadBatch, BATCH_DELAY);
+    });
+  };
+
+  setTimeout(loadBatch, 300);
+}
+
+function closeReader(){
+  $('readerOverlay').classList.remove('active');
+  state.currentBook=null; state.pages=[]; state.pdfDoc=null; state.isFlipping=false;
+  $('bookViewport').innerHTML='';
+  $('pageThumbnails').innerHTML='';
+  $('pageThumbnails').classList.remove('visible');
+  state.thumbnailsVisible=false;
+  loadBooks();
+}
+
+// ========== 获取当前显示的页码 ==========
+function getDisplayPages(){
+  if(state.isDoublePage){
+    if(state.currentPage === 0){
+      return { left: -1, right: 0, isCover: true };
+    }
+    const left = state.currentPage;
+    const right = left + 1;
+    return {
+      left: left < state.totalPages ? left : -1,
+      right: right < state.totalPages ? right : -1,
+      isDouble: true
+    };
+  } else {
+    return { left: -1, right: state.currentPage, isSingle: true };
+  }
+}
+
+// ========== 渲染当前页 ==========
+async function renderSpread(){
+  const viewport=$('bookViewport');
+  const pages=getDisplayPages();
+
+  // 确保需要的页面已加载
+  const needed = [];
+  if (pages.left >= 0) needed.push(pages.left);
+  if (pages.right >= 0) needed.push(pages.right);
+  if (needed.some(i => !state.pages[i])) {
+    $('readerPageInfo').textContent = '加载中...';
+    await loadPageBatch(needed);
+  }
+
+  // 计算页面尺寸（根据屏幕方向调整）
+  const isLandscape = window.innerWidth > window.innerHeight;
+  let pageW, pageH;
+
+  if (isLandscape && window.innerHeight <= 500) {
+    // 手机横屏小高度
+    pageW = 280 * state.zoom;
+    pageH = 200 * state.zoom;
+  } else if (isLandscape && window.innerHeight <= 700) {
+    // 横屏中等高度
+    pageW = 340 * state.zoom;
+    pageH = 480 * state.zoom;
+  } else if (state.isDoublePage) {
+    pageW = 400 * state.zoom;
+    pageH = 560 * state.zoom;
+  } else {
+    pageW = 420 * state.zoom;
+    pageH = 594 * state.zoom;
+  }
+
+  // 更新模式按钮
+  $('btnMode').textContent = state.isDoublePage ? '&#128214;' : '&#128196;';
+  $('btnMode').title = state.isDoublePage ? '切换到单页模式' : '切换到双页模式';
+
+  if(pages.isSingle){
+    const pc=state.pages[pages.right];
+    if(!pc) {
+      viewport.innerHTML = `<div class="book-stage" id="bookStage"><div class="page-sheet single page-loading" style="width:${pageW}px;height:${pageH}px;">加载中</div></div>`;
+      $('readerPageInfo').textContent = `${pages.right+1} / ${state.totalPages}`;
+      updateNavButtons();
+      return;
+    }
+
+    viewport.innerHTML=`<div class="book-stage" id="bookStage" style="position:relative;">
+      <div class="page-sheet single" style="width:${pageW}px;height:${pageH}px;" data-page="${pages.right}">
+        <canvas></canvas>
+        <div class="page-curl-hint" style="border-width:0 0 ${Math.min(38,pageH*0.07)}px ${Math.min(38,pageW*0.09)}px;"></div>
+      </div></div>`;
+
+    setTimeout(()=>{
+      const c=viewport.querySelector('canvas');
+      if(c && pc){
+        c.width=pc.width;c.height=pc.height;
+        c.getContext('2d').drawImage(pc,0,0);
+      }
+    },10);
+
+    $('readerPageInfo').textContent=`${pages.right+1} / ${state.totalPages}`;
+
+  } else if(pages.isCover){
+    const pc=state.pages[0];
+    if(!pc) {
+      viewport.innerHTML = `<div class="book-stage" id="bookStage"><div class="page-sheet right page-loading" style="width:${pageW}px;height:${pageH}px;">加载中</div></div>`;
+      $('readerPageInfo').textContent = `1 / ${state.totalPages}`;
+      updateNavButtons();
+      return;
+    }
+
+    viewport.innerHTML=`<div class="book-stage" id="bookStage" style="position:relative;gap:0;">
+      <div class="page-sheet left" style="width:${pageW}px;height:${pageH}px;visibility:hidden;"></div>
+      <div class="page-sheet right" style="width:${pageW}px;height:${pageH}px;" data-page="0">
+        <canvas></canvas>
+        <div class="page-curl-hint" style="border-width:0 0 ${Math.min(38,pageH*0.07)}px ${Math.min(38,pageW*0.09)}px;"></div>
+      </div>
+      <div class="book-spine-divider" style="height:${pageH*0.92}px;"></div></div>`;
+
+    setTimeout(()=>{
+      const c=viewport.querySelector('.page-sheet.right canvas');
+      if(c && pc){c.width=pc.width;c.height=pc.height;c.getContext('2d').drawImage(pc,0,0);}
+    },10);
+
+    $('readerPageInfo').textContent=`1 / ${state.totalPages}`;
+
+  } else {
+    const leftIdx=pages.left, rightIdx=pages.right;
+    const hasLeft=leftIdx>=0 && leftIdx<state.totalPages;
+    const hasRight=rightIdx>=0 && rightIdx<state.totalPages;
+    const pcLeft = hasLeft ? state.pages[leftIdx] : null;
+    const pcRight = hasRight ? state.pages[rightIdx] : null;
+
+    let leftHTML='', rightHTML='';
+    if(hasLeft) {
+      const loadingClass = pcLeft ? '' : ' page-loading';
+      const content = pcLeft ? '<canvas></canvas>' : '加载中';
+      leftHTML=`<div class="page-sheet left${loadingClass}" style="width:${pageW}px;height:${pageH}px;" data-page="${leftIdx}">${content}<div class="page-curl-hint left-side" style="border-width:0 ${Math.min(38,pageW*0.09)}px ${Math.min(38,pageH*0.07)}px 0;border-color:transparent rgba(0,0,0,0.06) transparent transparent;"></div></div>`;
+    } else {
+      leftHTML=`<div class="page-sheet left" style="width:${pageW}px;height:${pageH}px;visibility:hidden;"></div>`;
+    }
+
+    if(hasRight) {
+      const loadingClass = pcRight ? '' : ' page-loading';
+      const content = pcRight ? '<canvas></canvas>' : '加载中';
+      rightHTML=`<div class="page-sheet right${loadingClass}" style="width:${pageW}px;height:${pageH}px;" data-page="${rightIdx}">${content}<div class="page-curl-hint" style="border-width:0 0 ${Math.min(38,pageH*0.07)}px ${Math.min(38,pageW*0.09)}px;"></div></div>`;
+    } else {
+      rightHTML=`<div class="page-sheet right" style="width:${pageW}px;height:${pageH}px;visibility:hidden;"></div>`;
+    }
+
+    viewport.innerHTML=`<div class="book-stage" id="bookStage" style="position:relative;gap:0;">${leftHTML}${rightHTML}<div class="book-spine-divider" style="height:${pageH*0.92}px;"></div></div>`;
+
+    setTimeout(()=>{
+      viewport.querySelectorAll('.page-sheet canvas').forEach(c=>{
+        const pidx=parseInt(c.parentElement.dataset.page);
+        if(pidx>=0&&pidx<state.pages.length && state.pages[pidx]){
+          const pc=state.pages[pidx];
+          c.width=pc.width;c.height=pc.height;
+          c.getContext('2d').drawImage(pc,0,0);
+        }
+      });
+    },10);
+
+    const displayFrom = state.currentPage === 0 ? 1 : state.currentPage + 1;
+    const displayTo = Math.min(state.currentPage + (state.isDoublePage ? 2 : 1), state.totalPages);
+    if (state.isDoublePage && displayTo > displayFrom) {
+      $('readerPageInfo').textContent=`${displayFrom}-${displayTo} / ${state.totalPages}`;
+    } else {
+      $('readerPageInfo').textContent=`${displayFrom} / ${state.totalPages}`;
+    }
+  }
+
+  updateNavButtons();
+}
+
+function updateNavButtons(){
+  const p=$('btnPrev'), n=$('btnNext');
+  if(state.isDoublePage){
+    p.style.opacity=state.currentPage<=0?'0.25':'1';
+    n.style.opacity=state.currentPage+1>=state.totalPages?'0.25':'1';
+  }else{
+    p.style.opacity=state.currentPage<=0?'0.25':'1';
+    n.style.opacity=state.currentPage>=state.totalPages-1?'0.25':'1';
+  }
+}
+
+// =============================================
+//  ========== 核心：CSS 3D 翻页动画引擎 ==========
+// =============================================
+const FlipEngine = {
+  container: null,
+  pageW: 0,
+  pageH: 0,
+
+  init(w, h) {
+    this.pageW = w; this.pageH = h;
+    this.container = document.createElement('div');
+    this.container.className = 'flip-container';
+    this.container.style.cssText = `width:${w}px;height:${h}px;display:none;`;
+    const viewport = $('bookViewport');
+    viewport.appendChild(this.container);
+  },
+
+  _buildPage(flipDir) {
+    const isForward = flipDir === 'forward';
+    const originEdge = isForward ? 'left center' : 'right center';
+
+    this.container.innerHTML = '';
+    this.container.style.display = '';
+
+    if (isForward) {
+      this.container.style.left = (this.pageW) + 'px';
+      this.container.style.top = '0';
+      this.container.style.transformOrigin = 'left center';
+    } else {
+      this.container.style.left = '0px';
+      this.container.style.top = '0';
+      this.container.style.transformOrigin = 'right center';
+    }
+
+    const flipPage = document.createElement('div');
+    flipPage.className = 'flip-page';
+    flipPage.style.transformOrigin = originEdge;
+    flipPage.style.width = this.pageW + 'px';
+    flipPage.style.height = this.pageH + 'px';
+
+    const front = document.createElement('div');
+    front.className = 'flip-face flip-front';
+    front.style.width = this.pageW + 'px';
+    front.style.height = this.pageH + 'px';
+    front.style.borderRadius = isForward ? '0 6px 6px 0' : '6px 0 0 6px';
+    front.innerHTML = '<canvas></canvas>';
+
+    const back = document.createElement('div');
+    back.className = 'flip-face flip-back';
+    back.style.width = this.pageW + 'px';
+    back.style.height = this.pageH + 'px';
+    back.style.borderRadius = isForward ? '6px 0 0 6px' : '0 6px 6px 0';
+    back.innerHTML = '<canvas></canvas>';
+
+    flipPage.appendChild(front);
+    flipPage.appendChild(back);
+    this.container.appendChild(flipPage);
+
+    const shadow = document.createElement('div');
+    shadow.className = 'flip-shadow';
+    shadow.style.width = this.pageW + 'px';
+    shadow.style.height = this.pageH + 'px';
+    shadow.style.borderRadius = isForward ? '0 6px 6px 0' : '6px 0 0 6px';
+    this.container.appendChild(shadow);
+
+    return { flipPage, front, back, shadow };
+  },
+
+  renderFaces(frontCanvas, backCanvas, flipDir) {
+    const frontFace = this.container.querySelector('.flip-front canvas');
+    const backFace = this.container.querySelector('.flip-back canvas');
+    if (frontFace && frontCanvas) {
+      frontFace.width = frontCanvas.width; frontFace.height = frontCanvas.height;
+      frontFace.getContext('2d').drawImage(frontCanvas, 0, 0);
+    }
+    if (backFace && backCanvas) {
+      backFace.width = backCanvas.width; backFace.height = backCanvas.height;
+      const bctx = backFace.getContext('2d');
+      bctx.save();
+      bctx.scale(-1, 1);
+      bctx.drawImage(backCanvas, -backCanvas.width, 0);
+      bctx.restore();
+    }
+  },
+
+  setProgress(progress) {
+    const flipPage = this.container.querySelector('.flip-page');
+    const shadow = this.container.querySelector('.flip-shadow');
+    if (!flipPage) return;
+    const angle = progress * 180;
+    flipPage.style.transform = `rotateY(${-angle}deg)`;
+
+    const shadowIntensity = progress <= 0.5 ? progress * 2 : (1 - progress) * 2;
+    if (shadow) {
+      shadow.style.opacity = Math.max(0, shadowIntensity * 0.35);
+      shadow.style.background = `linear-gradient(to right,
+        rgba(0,0,0,${shadowIntensity * 0.25}) 0%,
+        rgba(0,0,0,${shadowIntensity * 0.12}) 50%,
+        transparent 100%)`;
+    }
+  },
+
+  animate(direction, duration, onComplete) {
+    const flipPage = this.container.querySelector('.flip-page');
+    const shadow = this.container.querySelector('.flip-shadow');
+    if (!flipPage) return;
+    state.isFlipping = true;
+
+    const targetAngle = direction === 'forward' ? -180 : 180;
+    const startTime = performance.now();
+
+    const easeInOutCubic = t => t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3)/2;
+
+    const step = (now) => {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const t = easeInOutCubic(progress);
+      const angle = targetAngle * t;
+
+      flipPage.style.transform = `rotateY(${angle}deg)`;
+
+      const p = Math.abs(angle) / 180;
+      const si = p <= 0.5 ? p * 2 : (1 - p) * 2;
+      if (shadow) {
+        shadow.style.opacity = Math.max(0, si * 0.35);
+        shadow.style.background = `linear-gradient(to right,
+          rgba(0,0,0,${si*0.25}) 0%,
+          rgba(0,0,0,${si*0.12}) 50%,
+          transparent 100%)`;
+      }
+
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        flipPage.style.transform = `rotateY(${targetAngle}deg)`;
+        if (shadow) shadow.style.opacity = '0';
+        setTimeout(() => {
+          this.container.style.display = 'none';
+          state.isFlipping = false;
+          if (onComplete) onComplete();
+        }, 100);
+      }
+    };
+
+    requestAnimationFrame(step);
+  },
+
+  hide() {
+    this.container.style.display = 'none';
+    state.isFlipping = false;
+  }
+};
+
+// ========== 翻页逻辑（双页模式也单页翻页） ==========
+function nextPage() {
+  if (state.isFlipping || state.totalPages === 0) return;
+
+  if (state.currentPage >= state.totalPages - 1) return;
+
+  const pageW = state.isDoublePage ? 400 * state.zoom : 420 * state.zoom;
+  const pageH = state.isDoublePage ? 560 * state.zoom : 594 * state.zoom;
+
+  FlipEngine.init(pageW, pageH);
+  FlipEngine._buildPage('forward');
+
+  // 确保翻页涉及的页面已加载
+  const frontIdx = state.currentPage;
+  const backIdx = state.currentPage + 1;
+
+  Promise.all([loadPage(frontIdx), loadPage(backIdx)]).then(() => {
+    const frontPage = state.pages[frontIdx];
+    const backPage = state.pages[backIdx];
+
+    if (!frontPage) return;
+
+    FlipEngine.renderFaces(frontPage, backPage || frontPage, 'forward');
+    FlipEngine.container.style.left = (state.isDoublePage ? pageW : 0) + 'px';
+
+    FlipEngine.animate('forward', 600, () => {
+      state.currentPage++;
+      renderSpread();
+    });
+  });
+}
+
+function prevPage() {
+  if (state.isFlipping || state.totalPages === 0) return;
+  if (state.currentPage <= 0) return;
+
+  const pageW = state.isDoublePage ? 400 * state.zoom : 420 * state.zoom;
+  const pageH = state.isDoublePage ? 560 * state.zoom : 594 * state.zoom;
+
+  FlipEngine.init(pageW, pageH);
+  FlipEngine._buildPage('backward');
+
+  const backIdx = state.currentPage;
+  const frontIdx = state.currentPage - 1;
+
+  Promise.all([loadPage(frontIdx), loadPage(backIdx)]).then(() => {
+    const frontPage = state.pages[frontIdx];
+    const backPage = state.pages[backIdx];
+
+    if (!backPage) return;
+
+    FlipEngine.renderFaces(frontPage || backPage, backPage, 'backward');
+    FlipEngine.container.style.left = '0px';
+
+    FlipEngine.animate('backward', 600, () => {
+      state.currentPage--;
+      renderSpread();
+    });
+  });
+}
+
+// ========== 模式切换 ==========
+function toggleMode(){
+  state.isDoublePage = !state.isDoublePage;
+
+  if(state.isDoublePage){
+    const p = state.currentPage;
+    if(p === 0){
+      state.currentPage = 0;
+    } else if(p % 2 === 0){
+      state.currentPage = p;
+    } else {
+      state.currentPage = p - 1;
+    }
+  } else {
+    if(state.currentPage === 0){
+      state.currentPage = 0;
+    } else {
+      state.currentPage = state.currentPage + 1;
+    }
+  }
+
+  renderSpread();
+}
+
+// ========== 缩放 ==========
+function zoomIn(){ state.zoom=Math.min(state.zoom+0.15,2.5); renderSpread(); }
+function zoomOut(){ state.zoom=Math.max(state.zoom-0.15,0.4); renderSpread(); }
+
+// ========== 缩略图 ==========
+function toggleThumbnails(){
+  state.thumbnailsVisible=!state.thumbnailsVisible;
+  const tn=$('pageThumbnails');
+  if(state.thumbnailsVisible){
+    tn.innerHTML='';
+    const thumbH=54;
+    for(let i=0;i<state.totalPages;i++){
+      const c=document.createElement('canvas');
+      const pc = state.pages[i];
+      if (pc) {
+        const ratio=pc.height/pc.width;
+        c.width=thumbH/ratio; c.height=thumbH;
+        const ctx=c.getContext('2d');
+        ctx.drawImage(pc,0,0,c.width,c.height);
+      } else {
+        c.width = 40; c.height = thumbH;
+        const ctx = c.getContext('2d');
+        ctx.fillStyle = '#333';
+        ctx.fillRect(0,0,40,thumbH);
+        ctx.fillStyle = '#666';
+        ctx.font = '10px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(i+1, 20, thumbH/2);
+      }
+      c.title=`第 ${i+1} 页`;
+
+      if(state.isDoublePage){
+        if(i===state.currentPage || i===state.currentPage+1) c.classList.add('active');
+      } else {
+        if(i===state.currentPage) c.classList.add('active');
+      }
+
+      c.onclick=()=>{
+        if(state.isDoublePage){
+          state.currentPage = i === 0 ? 0 : i;
+        } else {
+          state.currentPage = i;
+        }
+        renderSpread();
+        toggleThumbnails();
+      };
+      tn.appendChild(c);
+    }
+    tn.classList.add('visible');
+  }else{
+    tn.classList.remove('visible');
+  }
+}
+
+// ========== 键盘控制 ==========
+document.addEventListener('keydown',(e)=>{
+  if(!$('readerOverlay').classList.contains('active'))return;
+  switch(e.key){
+    case 'ArrowRight':case 'ArrowDown':case ' ': e.preventDefault(); nextPage(); break;
+    case 'ArrowLeft':case 'ArrowUp': e.preventDefault(); prevPage(); break;
+    case 'Escape': closeReader(); break;
+    case '=':case '+': zoomIn(); break;
+    case '-': zoomOut(); break;
+  }
+});
+
+// ========== 触摸/鼠标拖拽翻页 ==========
+let dragState = null;
+
+$('readerMain').addEventListener('pointerdown', (e) => {
+  if (state.isFlipping || state.totalPages === 0) return;
+  if (e.target.closest('button')) return;
+
+  const rect = $('readerMain').getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+
+  let flipDir = null;
+  let canFlip = false;
+
+  if (state.isDoublePage) {
+    if (state.currentPage === 0) {
+      const coverRect = $('bookViewport').getBoundingClientRect();
+      if (x >= coverRect.width/2 && state.totalPages >= 2) {
+        flipDir = 'forward';
+        canFlip = true;
+      }
+    } else {
+      const halfW = $('bookViewport').offsetWidth / 2;
+      if (x > halfW && state.currentPage + 1 < state.totalPages) {
+        flipDir = 'forward';
+        canFlip = true;
+      } else if (x <= halfW && state.currentPage > 0) {
+        flipDir = 'backward';
+        canFlip = true;
+      }
+    }
+  } else {
+    const halfW = $('bookViewport').offsetWidth / 2;
+    if (x > halfW && state.currentPage < state.totalPages - 1) {
+      flipDir = 'forward';
+      canFlip = true;
+    } else if (x <= halfW && state.currentPage > 0) {
+      flipDir = 'backward';
+      canFlip = true;
+    }
+  }
+
+  if (!canFlip) return;
+
+  const pageW = state.isDoublePage ? 400 * state.zoom : 420 * state.zoom;
+  const pageH = state.isDoublePage ? 560 * state.zoom : 594 * state.zoom;
+
+  FlipEngine.init(pageW, pageH);
+  FlipEngine._buildPage(flipDir);
+
+  if (flipDir === 'forward') {
+    const frontPage = state.currentPage;
+    const backPage = frontPage + 1;
+    if (backPage < state.totalPages) {
+      Promise.all([loadPage(frontPage), loadPage(backPage)]).then(() => {
+        FlipEngine.renderFaces(state.pages[frontPage], state.pages[backPage], 'forward');
+      });
+    }
+    FlipEngine.container.style.left = (state.isDoublePage ? pageW : 0) + 'px';
+  } else {
+    const backPage = state.currentPage;
+    const frontPage = backPage - 1;
+    if (frontPage >= 0) {
+      Promise.all([loadPage(frontPage), loadPage(backPage)]).then(() => {
+        FlipEngine.renderFaces(state.pages[frontPage], state.pages[backPage], 'backward');
+      });
+    }
+    FlipEngine.container.style.left = '0px';
+  }
+
+  dragState = {
+    dir: flipDir,
+    startX: x,
+    startY: y,
+    pageW: pageW,
+    isDoublePage: state.isDoublePage,
+    currentPage: state.currentPage
+  };
+
+  FlipEngine.container.style.display = '';
+  e.target.setPointerCapture(e.pointerId);
+});
+
+document.addEventListener('pointermove', (e) => {
+  if (!dragState) return;
+
+  const rect = $('readerMain').getBoundingClientRect();
+  const x = e.clientX - rect.left;
+
+  const dragDist = dragState.dir === 'forward' ? dragState.startX - x : x - dragState.startX;
+  const progress = Math.max(0, Math.min(1, dragDist / dragState.pageW));
+
+  FlipEngine.setProgress(progress);
+});
+
+document.addEventListener('pointerup', (e) => {
+  if (!dragState) return;
+
+  const rect = $('readerMain').getBoundingClientRect();
+  const x = e.clientX - rect.left;
+
+  const dragDist = dragState.dir === 'forward' ? dragState.startX - x : x - dragState.startX;
+  const progress = Math.max(0, Math.min(1, dragDist / dragState.pageW));
+
+  if (progress > 0.3) {
+    const remaining = 1 - progress;
+    const duration = Math.max(200, remaining * 600);
+
+    FlipEngine.animate(dragState.dir, duration, () => {
+      if (dragState.dir === 'forward') {
+        state.currentPage = Math.min(state.currentPage + 1, state.totalPages - 1);
+      } else {
+        state.currentPage = Math.max(state.currentPage - 1, 0);
+      }
+      renderSpread();
+    });
+  } else {
+    const remaining = progress;
+    const duration = Math.max(150, remaining * 400);
+    const startProgress = progress;
+    const startTime = performance.now();
+    const flipPage = FlipEngine.container.querySelector('.flip-page');
+    const shadow = FlipEngine.container.querySelector('.flip-shadow');
+
+    const snapBack = (now) => {
+      const elapsed = now - startTime;
+      const t = Math.min(elapsed / duration, 1);
+      const ease = 1 - Math.pow(1 - t, 3);
+      const p = startProgress * (1 - ease);
+      const angle = p * 180;
+      if (flipPage) flipPage.style.transform = `rotateY(${-angle}deg)`;
+      if (shadow) {
+        const si = p <= 0.5 ? p * 2 : (1 - p) * 2;
+        shadow.style.opacity = Math.max(0, si * 0.35);
+      }
+      if (t < 1) requestAnimationFrame(snapBack);
+      else { FlipEngine.hide(); }
+    };
+    requestAnimationFrame(snapBack);
+  }
+
+  dragState = null;
+});
+
+// ========== 触摸缩放 ==========
+let initialDistance = 0;
+let initialZoom = 1.0;
+
+$('readerMain').addEventListener('touchstart', (e) => {
+  if (e.touches.length === 2) {
+    initialDistance = Math.hypot(
+      e.touches[0].clientX - e.touches[1].clientX,
+      e.touches[0].clientY - e.touches[1].clientY
+    );
+    initialZoom = state.zoom;
+  }
+}, { passive: true });
+
+$('readerMain').addEventListener('touchmove', (e) => {
+  if (e.touches.length === 2) {
+    e.preventDefault();
+    const currentDistance = Math.hypot(
+      e.touches[0].clientX - e.touches[1].clientX,
+      e.touches[0].clientY - e.touches[1].clientY
+    );
+    const scale = currentDistance / initialDistance;
+    state.zoom = Math.max(0.4, Math.min(2.5, initialZoom * scale));
+    renderSpread();
+  }
+}, { passive: false });
+
+// ========== 鼠标滚轮缩放 ==========
+$('readerMain').addEventListener('wheel', (e) => {
+  if(e.ctrlKey||e.metaKey){
+    e.preventDefault();
+    if(e.deltaY<0)zoomIn();else zoomOut();
+  }
+}, { passive: false });
+
+// ========== 屏幕旋转监听 ==========
+window.addEventListener('orientationchange', () => {
+  if ($('readerOverlay').classList.contains('active')) {
+    setTimeout(() => renderSpread(), 300);
+  }
+});
+
+window.addEventListener('resize', () => {
+  if ($('readerOverlay').classList.contains('active')) {
+    renderSpread();
+  }
+});
+
+// ========== 拖拽上传 ==========
+document.addEventListener('DOMContentLoaded',()=>{
+  loadBooks();
+  document.addEventListener('dragover',e=>{e.preventDefault();});
+  document.addEventListener('drop',e=>{
+    e.preventDefault();
+    const f=e.dataTransfer.files[0];
+    if(f&&f.name.toLowerCase().endsWith('.pdf')){
+      const fi=$('fileInput');
+      const dt=new DataTransfer();
+      dt.items.add(f);
+      fi.files=dt.files;
+      handleFileSelect({target:fi});
+    } else if(f){
+      showToast('请上传 PDF 文件','error');
+    }
+  });
+});
+
+// ========== 微信小程序跳转 ==========
+function openWechatMiniApp(){
+  // 尝试检测是否在微信内置浏览器中
+  const ua = navigator.userAgent.toLowerCase();
+  const isWechat = ua.includes('micromessenger');
+  const isMobile = /android|iphone|ipad|ipod/.test(ua);
+
+  if (isWechat) {
+    // 在微信内置浏览器中，可以尝试直接跳转
+    // 这里使用微信开放标签或 URL Scheme
+    // 由于需要认证的公众号才能使用 wx-open-launch-weapp，
+    // 这里提供引导信息
+    showToast('请在微信中搜索"世说新材"小程序','success');
+  } else if (isMobile) {
+    // 移动端尝试唤起微信
+    // iOS: weixin://  URL scheme
+    // Android: 尝试多种方式
+    const schemes = [
+      'weixin://',
+      'weixin://dl/business/?appid='
+    ];
+    // 尝试打开微信
+    const startTime = Date.now();
+    window.location.href = schemes[0];
+
+    // 如果2秒后页面还在，说明没有安装微信或跳转失败
+    setTimeout(() => {
+      if (Date.now() - startTime < 2200) {
+        showToast('请手动打开微信搜索"世说新材"小程序','success');
+      }
+    }, 2000);
+  } else {
+    // 桌面端 - 显示提示
+    showToast('请使用手机微信搜索"世说新材"小程序','success');
+  }
+}
+</script>
+</body>
+</html>
