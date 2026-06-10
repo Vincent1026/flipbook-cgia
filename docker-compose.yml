@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  flipbook:
+    build: .
+    container_name: flipbook-cgia
+    restart: unless-stopped
+    ports:
+      - "3456:3456"
+    volumes:
+      # 持久化数据存储 — 文件在 NAS 上永久保存
+      - ./nas-data/uploads:/app/uploads
+      - ./nas-data/data:/app/data
+      - ./nas-data/covers:/app/data/covers
+      - ./nas-data/wechat-verify:/app/wechat-verify
+    environment:
+      - NODE_ENV=production
+      - PORT=3456
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3456/api/books"]
+      interval: 30s
+      timeout: 10s
+      retries: 3

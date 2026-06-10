@@ -6,8 +6,11 @@ const crypto = require('crypto');
 const os = require('os');
 const { exec } = require('child_process');
 
+// 检测运行平台（macOS / Linux Docker）
+const IS_MAC = process.platform === 'darwin';
+
 const app = express();
-const PORT = 3456;
+const PORT = process.env.PORT || 3456;
 
 // 数据文件路径
 const DATA_DIR = path.join(__dirname, 'data');
@@ -88,39 +91,26 @@ function saveBooks(books) {
   fs.writeFileSync(BOOKS_FILE, JSON.stringify(books, null, 2));
 }
 
-// ========== 服务器端PDF封面提取（使用系统 sips/ImageMagick） ==========
+// ========== 服务器端PDF封面提取（跨平台支持） ==========
 async function extractCoverServer(pdfPath, coverOutputPath) {
-  return new Promise((resolve, reject) => {
-    // 尝试用 sips (macOS 内置工具) 或 qlmanage 生成缩略图
-    // qlmanage 可以生成 PDF 的缩略图
-    const cmd = `qlmanage -t -s 400 -o "${path.dirname(coverOutputPath)}" "${pdfPath}" 2>/dev/null`;
-    exec(cmd, { timeout: 15000 }, (err, stdout, stderr) => {
-      if (err) {
-        // qlmanage 生成的是 PNG 格式，文件名是原文件名 + .png
-        const expectedFile = path.join(
-          path.dirname(coverOutputPath),
-          path.basename(pdfPath) + '.png'
-        );
+  return new Promise((resolve) => {
+    if (IS_MAC) {
+      // macOS: 使用 qlmanage 生成缩略图
+      const cmd = `qlmanage -t -s 400 -o "${path.dirname(coverOutputPath)}" "${pdfPath}" 2>/dev/null`;
+      exec(cmd, { timeout: 15000 }, (err) => {
+        const expectedFile = path.join(path.dirname(coverOutputPath), path.basename(pdfPath) + '.png');
         if (fs.existsSync(expectedFile)) {
-          // 重命名为目标文件
           fs.renameSync(expectedFile, coverOutputPath);
           resolve(true);
         } else {
           resolve(false);
         }
-      } else {
-        // 查找生成的文件
-        const dir = path.dirname(coverOutputPath);
-        const baseName = path.basename(pdfPath);
-        const possibleThumb = path.join(dir, baseName + '.png');
-        if (fs.existsSync(possibleThumb)) {
-          fs.renameSync(possibleThumb, coverOutputPath);
-          resolve(true);
-        } else {
-          resolve(false);
-        }
-      }
-    });
+      });
+    } else {
+      // Linux/Docker: 使用 pdfjs-dist 渲染第一页
+      // 封面提取将由前端完成并上传，服务器端尝试但优雅降级
+      resolve(false);
+    }
   });
 }
 

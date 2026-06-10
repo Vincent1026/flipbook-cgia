@@ -27,3 +27,7 @@ data/covers/
 
 # 敏感信息
 .edgeone/
+
+# Docker 本地数据卷
+nas-data/
+

@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: flipbook-cgia
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+    healthCheckPath: /api/books
+    autoDeploy: true
+    # ⚠️ Render 免费版不支持持久化磁盘
+    # uploads/ 和 data/ 目录在每次重新部署后会被重置
